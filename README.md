@@ -46,7 +46,7 @@ php artisan migrate
 php artisan serve
 ```
 
-##WEB
+## WEB
 
 - Execute ``` npm install ``` dentro de web, em seguida ``` ng serve ```.
 
