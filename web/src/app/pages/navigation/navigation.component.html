@@ -1,0 +1,11 @@
+<div id="sidebar" class="sidebar h-sidebar navbar-collapse collapse ace-save-state">
+  <ul class="nav  nav-list">
+    <li routerLinkActive="active" *ngFor="let route of routes">
+      <a routerLink="{{ route.url }}">
+        <i class="menu-icon {{ route.icon }}"></i>
+        <span class="menu-text"> {{route.name}} </span>
+      </a>
+      <b class="arrow"></b>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,23 @@
+<div id="navbar" class="navbar navbar-default navbar-collapse h-navbar ace-save-state">
+  <a style="color: #fff;" class="logout" (click)="logout()"><h3>Sair</h3> </a>
+
+  <select (change)="changeSelect()" [(ngModel)]="select" class="chosen-select form-control"
+  id="establishment" name="establishment" data-placeholder="Selecione">
+    <option value="0"> Selecione um Estabelecimento </option>
+    <option *ngFor="let item of establishment" value="{{ item.id }}">{{ item.name }}</option>
+  </select>
+
+  <div class="navbar-container ace-save-state" id="navbar-container">
+    <div class="navbar-header pull-left">
+      <a href="/items" class="navbar-brand">
+        <small>
+          <i class="fa fa-cogs"></i>
+        </small>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="main-container ace-save-state container" id="main-container">
+  <app-navigation></app-navigation>
+  <router-outlet></router-outlet>
+</div>

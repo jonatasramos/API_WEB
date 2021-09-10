@@ -1,0 +1,58 @@
+<div class="main-content">
+  <div class="main-content-inner">
+    <div class="page-content">
+      <div class="page-header">
+        <h1>{{ title }}</h1>
+      </div>
+
+      <div class="row col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <fieldset>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            <form [formGroup]="ItemForm" (ngSubmit)="onSubmit()">
+              <div class="form-group col-md-12">
+                <label for="name">Nome:</label>
+                <input data-parsley-minlength="3" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                  formControlName="name" value="{{item.name}}" type="text" required class="form-control" id="name"
+                  name="name" placeholder="Nome do Iten">
+
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                  <div *ngIf="f.name.errors.required">Preencha o Nome</div>
+                </div>
+              </div>
+              <div class="form-group col-md-12">
+                <label for="specialty">Categorias:</label>
+                <ng-multiselect-dropdown [placeholder]="'Selecione'" [settings]="dropdownSettings"
+                  [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)"
+                  (onSelectAll)="onSelectAll($event)" formControlName="categories" name="categories[]">
+                </ng-multiselect-dropdown>
+                <div *ngIf="submitted && f.categories.errors" class="invalid-feedback">
+                  <div *ngIf="f.categories.errors.required">Preencha uma categoria</div>
+                </div>
+              </div>
+              <div class="form-group col-md-12">
+                <br><br>
+                <a routerLink="/items">
+                  <button type="button" name="button" class="btn btn-info btn-lg">
+                    Voltar
+                  </button>
+                </a>
+                <button type="submit" class="btn btn-success pull-right btn-lg">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                  Salvar
+                </button>
+                <button (click)="delete()" *ngIf="id > 0" type="button" class="btn btn-danger pull-right btn-lg"
+                  style="margin-right: 5px;">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                  Deletar
+                </button>
+              </div>
+            </form>
+          </fieldset>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
